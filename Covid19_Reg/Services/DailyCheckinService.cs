@@ -24,6 +24,7 @@ namespace Covid19_Reg.Services
         {
             using (var db = new Covid19_RegContext())
             {
+                //找出满足表达式的所有项目的list
                 return db.DailyCheckins.Where<DailyCheckin>(predicate).ToList<DailyCheckin>();
             }
         }

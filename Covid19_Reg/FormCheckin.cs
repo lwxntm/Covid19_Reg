@@ -20,20 +20,12 @@ namespace Covid19_Reg
 
         private void button_submit_Click(object sender, EventArgs e)
         {
+            //检测是否输入姓名，是否勾选了状态变化radioButton
             if (!CheckInputs()) return;
 
             var _dailyCheckin = new DailyCheckin();
             _dailyCheckin.Name = textBox_name.Text.Trim();
-            if (radioButton_false.Checked) _dailyCheckin.Changed = false;
-            else
-            {
-                if (radioButton_true.Checked) _dailyCheckin.Changed = true;
-                else
-                {
-                    MessageBox.Show("状态是否变化必须选择！！");
-                    return;
-                }
-            }
+            _dailyCheckin.Changed = radioButton_false.Checked ? false : true;
             _dailyCheckin.ChangedContent = textBox_changed_content.Text.Trim();
             _dailyCheckin.Date = dateTimePicker1.Value;
             _dailyCheckin.Temperature = Convert.ToDouble(numericUpDown1.Value);
